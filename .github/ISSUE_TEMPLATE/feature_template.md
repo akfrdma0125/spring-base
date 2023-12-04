@@ -1,6 +1,6 @@
 ---
-name: JWT 토큰 인증 및 권한 부여
-about: JWT 토큰 인증 및 권한 부여와 관련된 이슈에 사용되는 템플릿
+name: Feature request
+about: 새로운 기능 제안
 
 ---
 
