@@ -16,9 +16,17 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.springframework.boot:spring-boot-starter-security'
+    //spring web
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    //lombok
+    compileOnly("org.projectlombok:lombok")
+    annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
+    annotationProcessor("org.projectlombok:lombok")
+    //mysql Driver
     runtimeOnly 'com.mysql:mysql-connector-j'
+    //rabbitmq
+    implementation 'org.springframework.boot:spring-boot-starter-amqp'
+    //Test
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.springframework.security:spring-security-test'
 }
