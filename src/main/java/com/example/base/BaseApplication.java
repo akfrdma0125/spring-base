@@ -17,24 +17,8 @@ public class BaseApplication {
         long num1 = Long.parseLong(parts[0]);
         long num2 = Long.parseLong(parts[2]);
         String operator = parts[1];
-        long answer;
-        switch (operator) {
-            case "+":
-                answer = num1 + num2;
-                break;
-            case "-":
-                answer = num1 - num2;
-                break;
-            case "*":
-                answer = num1 * num2;
-                break;
-            case "/":
-                answer = num1 / num2;
-                break;
-            default:
-                throw new InvalidOperatorException();
-        }
-        System.out.println(answer);
+        Calculator calculator = new Calculator();
+        System.out.println(calculator.calculate(num1, num2, operator));
     }
 
 }
