@@ -10,12 +10,9 @@ public class BaseApplication {
 
     public static void main(String[] args) {
 //        SpringApplication.run(BaseApplication.class, args);
-        String[] parts = new CalculationRequestReader().read();
-        long num1 = Long.parseLong(parts[0]);
-        long num2 = Long.parseLong(parts[2]);
-        String operator = parts[1];
-        Calculator calculator = new Calculator();
-        System.out.println(calculator.calculate(num1, num2, operator));
+        CalculationRequest calculationRequest = new CalculationRequestReader().read();
+        System.out.println(new Calculator().calculate
+                (calculationRequest.getNum1(), calculationRequest.getNum2(), calculationRequest.getOperator()));
     }
 
 }

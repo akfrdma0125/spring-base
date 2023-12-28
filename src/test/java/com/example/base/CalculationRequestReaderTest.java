@@ -14,9 +14,9 @@ public class CalculationRequestReaderTest {
 
         //when
         System.setIn(new ByteArrayInputStream("1 + 2".getBytes()));
-        String[] result = calculationRequestReader.read();
+        CalculationRequest result = calculationRequestReader.read();
 
         //then
-        assertThat(result).isEqualTo(new String[]{"1", "+", "2"}); // AssertJ assertion
+        assertThat(result).isEqualTo(new CalculationRequest(new String[]{"1", "+", "2"}));
     }
 }
