@@ -1,5 +1,23 @@
 # spring-base
 
+## 테스트 필요성
+Legacy 코드란 뭘까? 시간과 상관없이 테스트가 없는 코드
+
+테스트의 목적
+1. regression 버그 방지: 잘 돌아가던 코드가 이번 배포에는 안 돼요 ㅠㅠ 방지
+2. 좋은 아키텍처를 유도
+-> 좋은 테스트를 하다보면, SOLID 원칙을 지키게 됨
+
+## 테스트 3분류
+**LARGE** (5%): 멀티 서버<br>
+**MEDIUM** (15%): 단일 서버, 멀티 프로세스, 멀티 스레드<br>
+  H2를 이용하는 순간, MEDIUM 테스트 레벨이 되기 때문에 지양해야 함<br>
+**SMALL (80%): 단일 서버, 단일 프로세스 및 스레드, blocking call 없음**
+
+SMALL 수준의 테스트 코드를 작성하는 게 중요함!!
+
+
+
 ## 테스트 개념
 - SUT: System under test (테스트 하려는 대상)
 - BDD: Behaviour driven development (**given-when-then**), 유저가 시스템을 사용하는 user story를 강조하고 시나리오를 강조함
