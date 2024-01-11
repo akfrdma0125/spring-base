@@ -20,3 +20,9 @@ compileOnly("org.projectlombok:lombok")
 annotationProcessor("org.springframework.boot:spring-boot-configuration-processor")
 annotationProcessor("org.projectlombok:lombok")
 ```
+## 테스트
+
+---
+**테스트 하기 쉬운 코드 → 좋은 코드**
+
+[test.md](test.md)
