@@ -1,7 +1,7 @@
 package com.example.base.user.infrastructure;
 
 
-import com.example.base.common.domain.exception.ResourceNotFoundException;
+import com.example.base.user.domain.exception.ResourceNotFoundException;
 import com.example.base.user.domain.User;
 import com.example.base.user.domain.UserStatus;
 import com.example.base.user.service.port.UserRepository;

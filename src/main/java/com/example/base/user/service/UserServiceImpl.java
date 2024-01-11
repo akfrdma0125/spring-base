@@ -1,6 +1,6 @@
 package com.example.base.user.service;
 
-import com.example.base.common.domain.exception.ResourceNotFoundException;
+import com.example.base.user.domain.exception.ResourceNotFoundException;
 import com.example.base.common.service.port.ClockHolder;
 import com.example.base.common.service.port.UuidHolder;
 import com.example.base.user.controller.port.AuthenticationService;

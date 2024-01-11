@@ -1,7 +1,7 @@
 package com.example.base.user.domain;
 
 
-import com.example.base.common.domain.exception.CertificationCodeNotMatchedException;
+import com.example.base.user.domain.exception.CertificationCodeNotMatchedException;
 import com.example.base.common.service.port.ClockHolder;
 import com.example.base.common.service.port.UuidHolder;
 import lombok.Builder;
