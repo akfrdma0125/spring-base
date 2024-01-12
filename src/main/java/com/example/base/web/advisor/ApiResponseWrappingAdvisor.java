@@ -84,9 +84,6 @@ public class ApiResponseWrappingAdvisor implements ResponseBodyAdvice<Object> {
     }
 
     private ApiResponse<?> handleError(String path, Object body){
-        if (Objects.isNull(body)){
-            return ApiResponseGenerator.fail(path);
-        }
         if (body instanceof ApiResponse) {
             ApiResponse<?> errorResponse = (ApiResponse<?>) body;
             return ApiResponseGenerator.of(path, errorResponse.code(), errorResponse.message(), errorResponse.data());
