@@ -4,9 +4,6 @@ package com.example.base.web.dto;
 import com.example.base.common.domain.BusinessCode;
 
 public class ApiResponseGenerator {
-    private static final ApiResponse<Void> SUCCESS = new ApiResponse<>(BusinessCode.SUCCESS);
-    private static final ApiResponse<Void> CREATED = new ApiResponse<>(BusinessCode.CREATED);
-    private static final ApiResponse<Void> FAILURE = new ApiResponse<>(BusinessCode.INTERNAL_SERVER_ERROR);
 
     private ApiResponseGenerator() {
         throw new UnsupportedOperationException("Utility class.");
@@ -17,8 +14,12 @@ public class ApiResponseGenerator {
      *
      * @return <code>new ApiResponse<>("0000", "OK");</code>
      */
-    public static ApiResponse<Void> success() {
-        return SUCCESS;
+    public static ApiResponse<Void> success(String path) {
+        return ApiResponse.<Void>builder()
+                .path(path)
+                .code(BusinessCode.SUCCESS.getCode())
+                .message(BusinessCode.SUCCESS.getDescription())
+                .build();
     }
 
     /**
@@ -27,8 +28,13 @@ public class ApiResponseGenerator {
      * @param data 응답데이터
      * @return <code>new ApiResponse<>("0000", "OK", data);</code>
      */
-    public static <D> ApiResponse<D> success(D data) {
-        return new ApiResponse<>(SUCCESS.getCode(), SUCCESS.getMessage(), data);
+    public static <D> ApiResponse<D> success(String path, D data) {
+        return ApiResponse.<D>builder()
+                .path(path)
+                .code(BusinessCode.SUCCESS.getCode())
+                .message(BusinessCode.SUCCESS.getDescription())
+                .data(data)
+                .build();
     }
 
     /**
@@ -36,8 +42,12 @@ public class ApiResponseGenerator {
      *
      * @return <code>new ApiResponse<>("0001", "Created");</code>
      */
-    public static ApiResponse<Void> created() {
-        return CREATED;
+    public static ApiResponse<Void> created(String path) {
+        return ApiResponse.<Void>builder()
+                .path(path)
+                .code(BusinessCode.CREATED.getCode())
+                .message(BusinessCode.CREATED.getDescription())
+                .build();
     }
 
     /**
@@ -45,8 +55,12 @@ public class ApiResponseGenerator {
      *
      * @return <code>new ApiResponse<>("5000", "Internal Server Error");</code>
      */
-    public static ApiResponse<Void> fail() {
-        return FAILURE;
+    public static ApiResponse<Void> fail(String path) {
+        return ApiResponse.<Void>builder()
+                .path(path)
+                .code(BusinessCode.INTERNAL_SERVER_ERROR.getCode())
+                .message(BusinessCode.INTERNAL_SERVER_ERROR.getDescription())
+                .build();
     }
 
     /**
@@ -55,8 +69,13 @@ public class ApiResponseGenerator {
      * @param data 응답데이터
      * @return <code>new ApiResponse<>("5000", "Internal Server Error", data);</code>
      */
-    public static <D> ApiResponse<D> fail(D data) {
-        return new ApiResponse<>(FAILURE.getCode(), FAILURE.getMessage(), data);
+    public static <D> ApiResponse<D> fail(String path, D data) {
+        return ApiResponse.<D>builder()
+                .path(path)
+                .code(BusinessCode.INTERNAL_SERVER_ERROR.getCode())
+                .message(BusinessCode.INTERNAL_SERVER_ERROR.getDescription())
+                .data(data)
+                .build();
     }
 
     /**
@@ -67,7 +86,10 @@ public class ApiResponseGenerator {
      * @return <code>new ApiResponse<>(code, message, null);</code>
      */
     public static ApiResponse<Void> fail(String code, String message) {
-        return new ApiResponse<>(code, message, null);
+        return ApiResponse.<Void>builder()
+                .code(code)
+                .message(message)
+                .build();
     }
 
     /**
@@ -79,7 +101,12 @@ public class ApiResponseGenerator {
      * @param <D>     응답데이터 클래스
      * @return <code>new ApiResponse<>(code, message, data);</code>
      */
-    public static <D> ApiResponse<D> of(String code, String message, D data) {
-        return new ApiResponse<>(code, message, data);
+    public static <D> ApiResponse<D> of(String path, String code, String message, D data) {
+        return ApiResponse.<D>builder()
+                .path(path)
+                .code(code)
+                .message(message)
+                .data(data)
+                .build();
     }
 }
