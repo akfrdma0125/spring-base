@@ -14,7 +14,6 @@ import org.springframework.web.util.ContentCachingResponseWrapper;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.UUID;
 
 @Slf4j
 @Component
@@ -38,6 +37,12 @@ public class LoggingFilter extends OncePerRequestFilter {
         }
     }
 
+    /**
+     * Log request
+     * request body 있는 경우 구분
+     * @param request
+     * @throws IOException
+     */
     private void logRequest(ContentCachingRequestWrapper request) throws IOException {
         String contentType = request.getContentType();
         String queryString = request.getQueryString();
@@ -52,6 +57,12 @@ public class LoggingFilter extends OncePerRequestFilter {
         log.info(Constant.REQUEST_MESSAGE_FORMAT, request.getMethod(), requestUri);
     }
 
+
+    /**
+     * Log response
+     * http status code 400 이상인 경우 error 로그로 출력
+     * @param response
+     */
     private void logResponse(ContentCachingResponseWrapper response) {
         if (response.getContentSize() > 0) {
             String content = new String(response.getContentAsByteArray(), StandardCharsets.UTF_8);
