@@ -45,7 +45,6 @@ public class ApiResponseWrappingAdvisor implements ResponseBodyAdvice<Object> {
 
 
        var apiResponse = generateApiResponse(path, body, response, responseStatus);
-       logResponse(apiResponse, responseStatus);
 
        if (selectedConverterType.isAssignableFrom(StringHttpMessageConverter.class)) {
            return convertToJson(response, apiResponse);
@@ -73,14 +72,6 @@ public class ApiResponseWrappingAdvisor implements ResponseBodyAdvice<Object> {
             return ApiResponseGenerator.created(path);
         }
         return ApiResponseGenerator.success(path, body);
-    }
-
-    private void logResponse(ApiResponse<?> response, HttpStatus status) {
-        if (status.isError()) {
-            log.error("[ErrorResponse] {}", response);
-        } else{
-            log.trace("[ApiResponse] {}", response);
-        }
     }
 
     private ApiResponse<?> handleError(String path, Object body){
