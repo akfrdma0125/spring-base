@@ -3,7 +3,8 @@ package com.example.base.post.infrastructure;
 
 import com.example.base.post.domain.Post;
 import com.example.base.post.service.port.PostRepository;
-import org.springframework.stereotype.Component;
+import com.example.base.web.dto.PageCreate;
+import com.example.base.web.dto.PageResponse;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -11,7 +12,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicLong;
 
-@Component
 public class FakePostRepository implements PostRepository {
     private final AtomicLong idGenerator = new AtomicLong(1L);
     private final List<Post> data = Collections.synchronizedList(new ArrayList<>());
@@ -22,6 +22,11 @@ public class FakePostRepository implements PostRepository {
         return data.stream()
                 .filter(item -> item.id().equals(id))
                 .findAny();
+    }
+
+    @Override
+    public PageResponse<Post> findAll(PageCreate pageCreate) {
+        return null;
     }
 
     @Override
